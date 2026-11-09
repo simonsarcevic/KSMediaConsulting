@@ -59,29 +59,28 @@ dialog.visible::backdrop {
   cursor: pointer;
   transition:
     color 0.22s ease,
-    border-color 0.22s ease,
-    transform 0.22s ease;
+    border-color 0.22s ease;
 }
-.close span,
-.close span::after {
+.close::before,
+.close::after {
+  content: '';
   position: absolute;
   left: 50%;
   top: 50%;
   width: 13px;
   height: 1px;
   background: currentColor;
-  content: '';
+  transform-origin: center;
 }
-.close span {
+.close::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
-.close span::after {
-  transform: translate(-50%, -50%) rotate(90deg);
+.close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 .close:hover {
   color: var(--sage);
   border-color: var(--sage);
-  transform: rotate(8deg);
 }
 h2 {
   margin: 20px 0 16px;
