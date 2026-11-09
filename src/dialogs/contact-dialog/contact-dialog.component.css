@@ -40,11 +40,23 @@ dialog.visible::backdrop { opacity: 1; }
   border: 1px solid var(--linen);
   border-radius: 50%;
   background: rgba(246, 241, 231, .72);
-  font: 300 1.5rem/1 Figtree, sans-serif;
+  padding: 0;
   color: var(--graphite);
   cursor: pointer;
   transition: color .22s ease, border-color .22s ease, transform .22s ease;
 }
+.close span,
+.close span::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 13px;
+  height: 1px;
+  background: currentColor;
+  content: '';
+}
+.close span { transform: translate(-50%, -50%) rotate(45deg); }
+.close span::after { transform: translate(-50%, -50%) rotate(90deg); }
 .close:hover { color: var(--sage); border-color: var(--sage); transform: rotate(8deg); }
 h2 {
   margin: 20px 0 16px;

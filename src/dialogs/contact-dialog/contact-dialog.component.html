@@ -6,7 +6,7 @@
   (click)="$event.target === dialog && close()"
 >
   <div class="panel">
-    <button class="close" type="button" (click)="close()" aria-label="Dialog schließen">×</button>
+    <button class="close" type="button" (click)="close()" aria-label="Dialog schließen"><span aria-hidden="true"></span></button>
     @if (!sent()) {
       <p class="eyebrow">Projektanfrage</p>
       <h2>Erzähl uns von<br />deiner Idee.</h2>
