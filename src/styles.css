@@ -15,7 +15,7 @@ body {
   margin: 0;
   background: var(--ivory);
   color: var(--graphite);
-  font: 400 15px/1.55 Figtree, Arial, sans-serif;
+  font: 400 14px/1.58 Figtree, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 button, a { -webkit-tap-highlight-color: transparent; }

@@ -1,5 +1,6 @@
 <dialog
   #dialog
+  [class.visible]="visible()"
   [class.closing]="closing()"
   (cancel)="$event.preventDefault(); close()"
   (click)="$event.target === dialog && close()"
