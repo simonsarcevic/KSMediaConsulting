@@ -1,1 +1,39 @@
-<dialog #dialog (cancel)="$event.preventDefault(); close()" (click)="$event.target === dialog && close()"><div class="panel"><button class="close" type="button" (click)="close()" aria-label="Dialog schließen">×</button>@if (!sent()) {<p class="eyebrow">Projektanfrage</p><h2>Erzähl uns von<br />deiner Idee.</h2><p class="lead">Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.</p><form (ngSubmit)="submit()"><label>Name<input name="name" type="text" autocomplete="name" required placeholder="Wie dürfen wir dich ansprechen?" /></label><label>E-Mail<input name="email" type="email" autocomplete="email" required placeholder="name@unternehmen.de" /></label><label>Worum geht es?<textarea name="message" rows="4" required placeholder="Website, Social Media, Markenauftritt …"></textarea></label><button class="submit" type="submit">Anfrage vorbereiten <span>↗</span></button></form><small>Hinweis: Das Formular ist als Website-Demo angelegt und versendet noch keine Daten.</small>} @else {<div class="success"><img src="/assets/brand/ks-signet.svg" alt="" /><p class="eyebrow">Vielen Dank</p><h2>Das klingt nach<br />einem guten Anfang.</h2><p>Die Anfrage wurde in dieser Demo erfasst. Für den Live-Betrieb kann hier dein gewünschter Formular-Service angebunden werden.</p><button class="submit" type="button" (click)="close()">Zurück zur Website</button></div>}</div></dialog>
+<dialog
+  #dialog
+  [class.closing]="closing()"
+  (cancel)="$event.preventDefault(); close()"
+  (click)="$event.target === dialog && close()"
+>
+  <div class="panel">
+    <button class="close" type="button" (click)="close()" aria-label="Dialog schließen">×</button>
+    @if (!sent()) {
+      <p class="eyebrow">Projektanfrage</p>
+      <h2>Erzähl uns von<br />deiner Idee.</h2>
+      <p class="lead">Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.</p>
+      <form (ngSubmit)="submit()">
+        <label>
+          <span>Name</span>
+          <input name="name" type="text" autocomplete="name" required placeholder="Wie dürfen wir dich ansprechen?" />
+        </label>
+        <label>
+          <span>E-Mail</span>
+          <input name="email" type="email" autocomplete="email" required placeholder="name@unternehmen.de" />
+        </label>
+        <label>
+          <span>Worum geht es?</span>
+          <textarea name="message" rows="3" required placeholder="Website, Social Media, Markenauftritt …"></textarea>
+        </label>
+        <button class="submit" type="submit">Anfrage vorbereiten <span>↗</span></button>
+      </form>
+      <small>Hinweis: Das Formular ist als Website-Demo angelegt und versendet noch keine Daten.</small>
+    } @else {
+      <div class="success">
+        <img src="/assets/brand/ks-signet.svg" alt="" />
+        <p class="eyebrow">Vielen Dank</p>
+        <h2>Das klingt nach<br />einem guten Anfang.</h2>
+        <p>Die Anfrage wurde in dieser Demo erfasst. Für den Live-Betrieb kann hier dein gewünschter Formular-Service angebunden werden.</p>
+        <button class="submit" type="button" (click)="close()">Zurück zur Website</button>
+      </div>
+    }
+  </div>
+</dialog>

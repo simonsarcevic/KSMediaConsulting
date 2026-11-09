@@ -1,1 +1,10 @@
-.contact{background:var(--linen)}h2{font:400 clamp(3.2rem,7vw,7.6rem)/.98 'Libre Caslon Text',serif;letter-spacing:-.05em;margin:40px 0 72px}.contact-row{display:grid;grid-template-columns:1fr 1.4fr;align-items:end;gap:50px}.contact-row p{max-width:440px;color:var(--slate);line-height:1.7}button{border:0;border-bottom:1px solid var(--sage);background:transparent;padding:20px 0;display:flex;justify-content:space-between;width:100%;color:var(--graphite);font:400 clamp(1.8rem,3vw,3rem) 'Libre Caslon Text',serif;cursor:pointer;text-align:left}button b{font:400 1.5rem Figtree,sans-serif;transition:transform .25s ease}button:hover b{transform:translate(5px,-5px)}@media(max-width:700px){.contact-row{grid-template-columns:1fr}}
+.contact { background: var(--linen); overflow: hidden; }
+.contact::after { content: 'KS'; position: absolute; right: -2vw; bottom: -7vw; color: rgba(142, 154, 139, .1); font: 400 clamp(9rem, 22vw, 22rem)/.8 'Libre Caslon Text', serif; pointer-events: none; }
+h2 { position: relative; z-index: 1; font: 400 clamp(2.9rem, 5.8vw, 6.15rem)/.98 'Libre Caslon Text', serif; letter-spacing: -.05em; margin: 30px 0 52px; }
+.contact-row { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.35fr; align-items: end; gap: 42px; }
+.contact-row p { max-width: 410px; color: var(--slate); line-height: 1.65; }
+button { border: 0; border-bottom: 1px solid var(--sage); background: transparent; padding: 16px 0; display: flex; justify-content: space-between; width: 100%; color: var(--graphite); font: 400 clamp(1.65rem, 2.6vw, 2.6rem) 'Libre Caslon Text', serif; cursor: pointer; text-align: left; transition: color .25s ease, padding .25s ease; }
+button:hover { color: var(--sage); padding-inline: 8px; }
+button b { font: 400 1.3rem Figtree, sans-serif; transition: transform .25s ease; }
+button:hover b { transform: translate(5px, -5px); }
+@media (max-width: 700px) { .contact-row { grid-template-columns: 1fr; } }

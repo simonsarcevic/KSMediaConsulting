@@ -1,1 +1,12 @@
-.about{background:var(--sage);color:var(--ivory);display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(56px,9vw,150px)}.about-mark{min-height:540px;padding:48px;background:var(--graphite);display:flex;flex-direction:column;justify-content:space-between}.about-mark img{width:96px}.about-mark p{margin:0;font:italic 1.25rem/1.5 'Libre Caslon Text',serif;color:var(--platinum-light)}.about-copy{padding-block:44px}.light{color:var(--platinum-light)}h2{max-width:820px;font:400 clamp(3rem,5.5vw,6rem)/1.03 'Libre Caslon Text',serif;letter-spacing:-.045em;margin:32px 0 64px}.copy-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}.copy-grid p{color:var(--platinum-light);line-height:1.75}.principles{display:flex;flex-wrap:wrap;gap:28px;margin-top:72px;padding-top:24px;border-top:1px solid rgba(246,241,231,.3);font:600 .66rem 'Josefin Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase}@media(max-width:900px){.about{grid-template-columns:1fr}.about-mark{min-height:360px}.about-copy{padding-block:0}}@media(max-width:560px){.copy-grid{grid-template-columns:1fr;gap:18px}.about-mark{padding:28px}}
+.about { background: var(--sage); color: var(--ivory); display: grid; grid-template-columns: .76fr 1.24fr; gap: clamp(48px, 7vw, 110px); }
+.about-mark { min-height: 430px; padding: 36px; background: var(--graphite); display: flex; flex-direction: column; justify-content: space-between; box-shadow: 14px 14px 0 rgba(46, 45, 42, .1); }
+.about-mark img { width: 80px; }
+.about-mark p { margin: 0; font: italic 1.12rem/1.5 'Libre Caslon Text', serif; color: var(--platinum-light); }
+.about-copy { padding-block: 24px; }
+.light { color: var(--platinum-light); }
+h2 { max-width: 760px; font: 400 clamp(2.7rem, 4.7vw, 4.8rem)/1.03 'Libre Caslon Text', serif; letter-spacing: -.045em; margin: 24px 0 44px; }
+.copy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.copy-grid p { color: var(--platinum-light); line-height: 1.7; }
+.principles { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 52px; padding-top: 19px; border-top: 1px solid rgba(246, 241, 231, .3); font: 600 .62rem 'Josefin Sans', sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+@media (max-width: 900px) { .about { grid-template-columns: 1fr; } .about-mark { min-height: 320px; } .about-copy { padding-block: 0; } }
+@media (max-width: 560px) { .copy-grid { grid-template-columns: 1fr; gap: 14px; } .about-mark { padding: 26px; } }
