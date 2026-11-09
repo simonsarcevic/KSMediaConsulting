@@ -1,3 +1,9 @@
 import { Component } from '@angular/core';
-@Component({ selector: 'app-footer', templateUrl: './footer.component.html', styleUrl: './footer.component.css' })
-export class FooterComponent { protected readonly year = new Date().getFullYear(); }
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrl: './footer.component.css',
+})
+export class FooterComponent {
+  protected readonly year = new Date().getFullYear();
+}

@@ -37,13 +37,17 @@ export class ContactDialogComponent {
     if (this.closing()) return;
     this.closing.set(true);
     this.visible.set(false);
-    const reduceMotion = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(() => {
-      this.dialog()?.nativeElement.close();
-      this.sent.set(false);
-      this.closing.set(false);
-      this.closed.emit();
-    }, reduceMotion ? 0 : 210);
+    const reduceMotion =
+      typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(
+      () => {
+        this.dialog()?.nativeElement.close();
+        this.sent.set(false);
+        this.closing.set(false);
+        this.closed.emit();
+      },
+      reduceMotion ? 0 : 210,
+    );
   }
 
   protected submit(): void {

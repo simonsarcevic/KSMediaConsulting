@@ -1,4 +1,27 @@
 <section id="leistungen" class="section services">
-  <div class="section-head" appReveal><p class="eyebrow">Was wir machen</p><h2>Ein Auftritt, der<br />zusammenpasst.</h2><p>Strategie, Design und Umsetzung kommen bei uns aus einer Hand. So entsteht kein Stückwerk, sondern ein digitaler Auftritt mit einer klaren Linie.</p></div>
-  <div class="service-list" appReveal>@for (service of services; track service.number) {<article><span class="number">{{ service.number }}</span><div><h3>{{ service.title }}</h3><p>{{ service.description }}</p></div><ul>@for (tag of service.tags; track tag) {<li>{{ tag }}</li>}</ul><span class="arrow" aria-hidden="true">↗</span></article>}</div>
+  <div class="section-head" appReveal>
+    <p class="eyebrow">Was wir machen</p>
+    <h2>Ein Auftritt, der<br />zusammenpasst.</h2>
+    <p>
+      Strategie, Design und Umsetzung kommen bei uns aus einer Hand. So entsteht kein Stückwerk,
+      sondern ein digitaler Auftritt mit einer klaren Linie.
+    </p>
+  </div>
+  <div class="service-list" appReveal>
+    @for (service of services; track service.number) {
+      <article>
+        <span class="number">{{ service.number }}</span>
+        <div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+        </div>
+        <ul>
+          @for (tag of service.tags; track tag) {
+            <li>{{ tag }}</li>
+          }
+        </ul>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </article>
+    }
+  </div>
 </section>

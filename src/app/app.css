@@ -1,2 +1,6 @@
-:host { display: block; }
-main { overflow: clip; }
+:host {
+  display: block;
+}
+main {
+  overflow: clip;
+}

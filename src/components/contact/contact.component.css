@@ -1,10 +1,73 @@
-.contact { background: var(--linen); overflow: hidden; }
-.contact::after { content: 'KS'; position: absolute; right: -2vw; bottom: -7vw; color: rgba(142, 154, 139, .1); font: 400 clamp(9rem, 22vw, 22rem)/.8 'Libre Caslon Text', serif; pointer-events: none; }
-h2 { position: relative; z-index: 1; font: 400 clamp(2.55rem, 4.9vw, 5.15rem)/1 'Libre Caslon Text', serif; letter-spacing: -.048em; margin: 28px 0 48px; }
-.contact-row { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.35fr; align-items: end; gap: 42px; }
-.contact-row p { max-width: 410px; color: var(--slate); line-height: 1.65; }
-button { border: 0; border-bottom: 1px solid var(--sage); background: transparent; padding: 16px 0; display: flex; justify-content: space-between; width: 100%; color: var(--graphite); font: 400 clamp(1.5rem, 2.2vw, 2.2rem) 'Libre Caslon Text', serif; cursor: pointer; text-align: left; transition: color .25s ease, padding .25s ease; }
-button:hover { color: var(--sage); padding-inline: 8px; }
-button b { font: 400 1.3rem Figtree, sans-serif; transition: transform .25s ease; }
-button:hover b { transform: translate(5px, -5px); }
-@media (max-width: 700px) { .contact-row { grid-template-columns: 1fr; } }
+.contact {
+  background: var(--linen);
+  overflow: hidden;
+}
+.contact::after {
+  content: 'KS';
+  position: absolute;
+  right: -2vw;
+  bottom: -7vw;
+  color: rgba(142, 154, 139, 0.1);
+  font:
+    400 clamp(9rem, 22vw, 22rem)/0.8 'Libre Caslon Text',
+    serif;
+  pointer-events: none;
+}
+h2 {
+  position: relative;
+  z-index: 1;
+  font:
+    400 clamp(2.55rem, 4.9vw, 5.15rem)/1 'Libre Caslon Text',
+    serif;
+  letter-spacing: -0.048em;
+  margin: 28px 0 48px;
+}
+.contact-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  align-items: end;
+  gap: 42px;
+}
+.contact-row p {
+  max-width: 410px;
+  color: var(--slate);
+  line-height: 1.65;
+}
+button {
+  border: 0;
+  border-bottom: 1px solid var(--sage);
+  background: transparent;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--graphite);
+  font:
+    400 clamp(1.5rem, 2.2vw, 2.2rem) 'Libre Caslon Text',
+    serif;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 0.25s ease,
+    padding 0.25s ease;
+}
+button:hover {
+  color: var(--sage);
+  padding-inline: 8px;
+}
+button b {
+  font:
+    400 1.3rem Figtree,
+    sans-serif;
+  transition: transform 0.25s ease;
+}
+button:hover b {
+  transform: translate(5px, -5px);
+}
+@media (max-width: 700px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+}

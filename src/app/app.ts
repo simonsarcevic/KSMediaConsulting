@@ -9,9 +9,20 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { ContactDialogComponent } from '../dialogs/contact-dialog/contact-dialog.component';
 
 @Component({
-  imports: [HeaderComponent, HeroComponent, ServicesComponent, AboutComponent, ProcessComponent, ContactComponent, FooterComponent, ContactDialogComponent],
+  imports: [
+    HeaderComponent,
+    HeroComponent,
+    ServicesComponent,
+    AboutComponent,
+    ProcessComponent,
+    ContactComponent,
+    FooterComponent,
+    ContactDialogComponent,
+  ],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })
-export class App { protected readonly contactOpen = signal(false); }
+export class App {
+  protected readonly contactOpen = signal(false);
+}

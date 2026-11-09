@@ -12,17 +12,27 @@ export class RevealDirective implements OnDestroy {
 
   constructor(private readonly element: ElementRef<HTMLElement>) {
     afterNextRender(() => {
-      if (typeof matchMedia !== 'function' || typeof IntersectionObserver === 'undefined' || matchMedia('(prefers-reduced-motion: reduce)').matches) { this.element.nativeElement.classList.add('is-visible'); return; }
+      if (
+        typeof matchMedia !== 'function' ||
+        typeof IntersectionObserver === 'undefined' ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        this.element.nativeElement.classList.add('is-visible');
+        return;
+      }
 
       this.lastScrollY = window.scrollY;
       window.addEventListener('scroll', this.handleScroll, { passive: true });
-      this.observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        } else if (this.scrollingUp && entry.boundingClientRect.top > 0) {
-          entry.target.classList.remove('is-visible');
-        }
-      }, { threshold: 0.14 });
+      this.observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else if (this.scrollingUp && entry.boundingClientRect.top > 0) {
+            entry.target.classList.remove('is-visible');
+          }
+        },
+        { threshold: 0.14 },
+      );
       this.observer.observe(this.element.nativeElement);
     });
   }

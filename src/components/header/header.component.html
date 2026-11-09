@@ -1,8 +1,22 @@
 <header [class.compact]="compact()">
-  <a class="brand" href="#start" aria-label="KS Media Consulting – Startseite"><img src="/assets/brand/ks-logo-horizontal.svg" alt="KS Media Consulting" /></a>
-  <button class="menu-toggle" type="button" (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()" aria-label="Menü öffnen"><span></span><span></span></button>
+  <a class="brand" href="#start" aria-label="KS Media Consulting – Startseite"
+    ><img src="/assets/brand/ks-logo-horizontal.svg" alt="KS Media Consulting"
+  /></a>
+  <button
+    class="menu-toggle"
+    type="button"
+    (click)="menuOpen.set(!menuOpen())"
+    [attr.aria-expanded]="menuOpen()"
+    aria-label="Menü öffnen"
+  >
+    <span></span><span></span>
+  </button>
   <nav [class.open]="menuOpen()" aria-label="Hauptnavigation">
-    <a href="#leistungen" (click)="closeMenu()">Leistungen</a><a href="#ueber-uns" (click)="closeMenu()">Über uns</a><a href="#prozess" (click)="closeMenu()">Prozess</a>
-    <button class="nav-cta" type="button" (click)="contactClick.emit(); closeMenu()">Projekt anfragen <span>↗</span></button>
+    <a href="#leistungen" (click)="closeMenu()">Leistungen</a
+    ><a href="#ueber-uns" (click)="closeMenu()">Über uns</a
+    ><a href="#prozess" (click)="closeMenu()">Prozess</a>
+    <button class="nav-cta" type="button" (click)="contactClick.emit(); closeMenu()">
+      Projekt anfragen <span>↗</span>
+    </button>
   </nav>
 </header>

@@ -1,12 +1,82 @@
-.about { background: var(--sage); color: var(--ivory); display: grid; grid-template-columns: .76fr 1.24fr; gap: clamp(48px, 7vw, 110px); }
-.about-mark { min-height: 430px; padding: 36px; background: var(--graphite); display: flex; flex-direction: column; justify-content: space-between; box-shadow: 14px 14px 0 rgba(46, 45, 42, .1); }
-.about-mark img { width: 80px; }
-.about-mark p { margin: 0; font: italic 1.02rem/1.5 'Libre Caslon Text', serif; color: var(--platinum-light); }
-.about-copy { padding-block: 24px; }
-.light { color: var(--platinum-light); }
-h2 { max-width: 720px; font: 400 clamp(2.4rem, 4vw, 4.1rem)/1.04 'Libre Caslon Text', serif; letter-spacing: -.043em; margin: 24px 0 40px; }
-.copy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
-.copy-grid p { color: var(--platinum-light); line-height: 1.7; }
-.principles { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 52px; padding-top: 19px; border-top: 1px solid rgba(246, 241, 231, .3); font: 600 .62rem 'Josefin Sans', sans-serif; letter-spacing: .18em; text-transform: uppercase; }
-@media (max-width: 900px) { .about { grid-template-columns: 1fr; } .about-mark { min-height: 320px; } .about-copy { padding-block: 0; } }
-@media (max-width: 560px) { .copy-grid { grid-template-columns: 1fr; gap: 14px; } .about-mark { padding: 26px; } }
+.about {
+  background: var(--sage);
+  color: var(--ivory);
+  display: grid;
+  grid-template-columns: 0.76fr 1.24fr;
+  gap: clamp(48px, 7vw, 110px);
+}
+.about-mark {
+  min-height: 430px;
+  padding: 36px;
+  background: var(--graphite);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 14px 14px 0 rgba(46, 45, 42, 0.1);
+}
+.about-mark img {
+  width: 80px;
+}
+.about-mark p {
+  margin: 0;
+  font:
+    italic 1.02rem/1.5 'Libre Caslon Text',
+    serif;
+  color: var(--platinum-light);
+}
+.about-copy {
+  padding-block: 24px;
+}
+.light {
+  color: var(--platinum-light);
+}
+h2 {
+  max-width: 720px;
+  font:
+    400 clamp(2.4rem, 4vw, 4.1rem)/1.04 'Libre Caslon Text',
+    serif;
+  letter-spacing: -0.043em;
+  margin: 24px 0 40px;
+}
+.copy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+.copy-grid p {
+  color: var(--platinum-light);
+  line-height: 1.7;
+}
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 52px;
+  padding-top: 19px;
+  border-top: 1px solid rgba(246, 241, 231, 0.3);
+  font:
+    600 0.62rem 'Josefin Sans',
+    sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .about-mark {
+    min-height: 320px;
+  }
+  .about-copy {
+    padding-block: 0;
+  }
+}
+@media (max-width: 560px) {
+  .copy-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .about-mark {
+    padding: 26px;
+  }
+}
