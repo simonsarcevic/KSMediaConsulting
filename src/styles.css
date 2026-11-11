@@ -28,12 +28,46 @@ body {
 @media (pointer: fine) {
   body {
     cursor:
-      url('/assets/cursors/macos-arrow.svg') 4 3,
+      url('/assets/cursors/macos-arrow.svg') 3 2,
       default !important;
   }
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  dt,
+  dd,
+  span,
+  small,
+  strong,
+  em,
+  time,
+  address,
+  blockquote,
+  figcaption {
+    cursor:
+      url('/assets/cursors/macos-text.svg') 12 12,
+      text !important;
+  }
+  input:not([type='button']):not([type='submit']):not([type='reset']):not([type='checkbox']):not(
+      [type='radio']
+    ),
+  textarea,
+  [contenteditable='true'] {
+    cursor:
+      url('/assets/cursors/macos-text.svg') 12 12,
+      text !important;
+  }
   a,
+  a *,
   button,
+  button *,
   [role='button'],
+  [role='button'] *,
   summary,
   select,
   label[for],
@@ -43,23 +77,15 @@ body {
   input[type='checkbox'],
   input[type='radio'] {
     cursor:
-      url('/assets/cursors/macos-pointer.svg') 14 3,
+      url('/assets/cursors/macos-pointer.svg') 10 2,
       pointer !important;
   }
-  input:not([type='button']):not([type='submit']):not([type='reset']):not([type='checkbox']):not(
-      [type='radio']
-    ),
-  textarea,
-  [contenteditable='true'] {
-    cursor:
-      url('/assets/cursors/macos-text.svg') 16 16,
-      text !important;
-  }
   button:disabled,
+  button:disabled *,
   input:disabled,
   select:disabled {
     cursor:
-      url('/assets/cursors/macos-arrow.svg') 4 3,
+      url('/assets/cursors/macos-arrow.svg') 3 2,
       default !important;
   }
 }
