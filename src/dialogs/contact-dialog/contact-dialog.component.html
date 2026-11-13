@@ -11,7 +11,11 @@
       <p class="eyebrow">Projektanfrage</p>
       <h2>Erzähl uns von<br />deiner Idee.</h2>
       <p class="lead">Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.</p>
-      <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+      <form
+        [formGroup]="formGroup"
+        (keydown.enter)="$event.preventDefault(); submit()"
+        novalidate
+      >
         <label>
           <span>Name</span>
           <input
@@ -63,7 +67,7 @@
         @if (sendError()) {
           <p class="form-error" role="alert">{{ sendError() }}</p>
         }
-        <button class="submit" type="submit" [disabled]="sending()">
+        <button class="submit" type="button" [disabled]="sending()" (click)="submit()">
           <span>{{ sending() ? 'Wird versendet …' : 'Anfrage senden' }}</span>
           <span aria-hidden="true">↗</span>
         </button>
