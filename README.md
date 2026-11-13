@@ -18,10 +18,22 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 To start a local development server, run:
 
 ```bash
-ng serve
+copy .env.example .env.local
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Trage zuvor in `.env.local` deinen Resend-Key ein. Für den aktuellen Testbetrieb sollten dort
+folgende Werte stehen:
+
+```dotenv
+RESEND_API_KEY=re_dein_key
+CONTACT_TO_EMAIL=sarcevicsimon07@gmail.com
+CONTACT_FROM_EMAIL=K&S Media Consulting <onboarding@resend.dev>
+```
+
+`npm start` startet sowohl Angular auf `http://localhost:4200/` als auch das lokale
+Kontakt-Backend auf Port `3001`. Angular leitet `/api` automatisch dorthin weiter. Die Datei
+`.env.local` wird von Git ignoriert, damit der API-Key nicht im Frontend oder Repository landet.
 
 ## Code scaffolding
 
