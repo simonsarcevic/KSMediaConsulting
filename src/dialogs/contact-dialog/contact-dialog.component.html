@@ -22,6 +22,7 @@
             maxlength="120"
             placeholder="Wie dürfen wir dich ansprechen?"
             [formControl]="formGroup.controls.name"
+            [attr.aria-invalid]="formGroup.controls.name.invalid && formGroup.controls.name.touched"
           />
         </label>
         <label>
@@ -34,6 +35,7 @@
             maxlength="254"
             placeholder="name@unternehmen.de"
             [formControl]="formGroup.controls.email"
+            [attr.aria-invalid]="formGroup.controls.email.invalid && formGroup.controls.email.touched"
           />
         </label>
         <label>
@@ -45,6 +47,7 @@
             maxlength="4000"
             placeholder="Website, Social Media, Markenauftritt …"
             [formControl]="formGroup.controls.subject"
+            [attr.aria-invalid]="formGroup.controls.subject.invalid && formGroup.controls.subject.touched"
           ></textarea>
         </label>
         <label class="honeypot" aria-hidden="true">

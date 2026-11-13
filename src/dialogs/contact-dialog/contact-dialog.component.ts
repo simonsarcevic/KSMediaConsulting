@@ -73,6 +73,9 @@ export class ContactDialogComponent {
   protected async submit(): Promise<void> {
     if (this.formGroup.invalid || this.sending()) {
       this.formGroup.markAllAsTouched();
+      this.sendError.set(
+        'Bitte fülle deinen Namen, eine gültige E-Mail-Adresse und deine Anfrage aus.',
+      );
       return;
     }
 

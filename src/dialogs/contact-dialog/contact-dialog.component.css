@@ -167,6 +167,10 @@ input::placeholder,
 textarea::placeholder {
   color: rgba(90, 88, 83, 0.66);
 }
+label:has([aria-invalid='true']) {
+  color: #9a3535;
+  border-bottom-color: #9a3535;
+}
 .submit {
   border: 0;
   border-radius: 3px;
@@ -202,13 +206,11 @@ textarea::placeholder {
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
-  white-space: nowrap;
 }
 .form-error {
   margin: -2px 0 0;
   color: #9a3535;
   font-size: 0.82rem;
-  line-height: 1.45;
 }
 small {
   display: block;
