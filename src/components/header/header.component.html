@@ -5,13 +5,14 @@
   <button
     class="menu-toggle"
     type="button"
-    (click)="menuOpen.set(!menuOpen())"
+    (click)="toggleMenu()"
     [attr.aria-expanded]="menuOpen()"
-    aria-label="Menü öffnen"
+    aria-controls="main-navigation"
+    [attr.aria-label]="menuOpen() ? 'Menü schließen' : 'Menü öffnen'"
   >
     <span></span><span></span>
   </button>
-  <nav [class.open]="menuOpen()" aria-label="Hauptnavigation">
+  <nav id="main-navigation" [class.open]="menuOpen()" aria-label="Hauptnavigation">
     <a href="#leistungen" (click)="closeMenu()">Leistungen</a
     ><a href="#ueber-uns" (click)="closeMenu()">Über uns</a
     ><a href="#prozess" (click)="closeMenu()">Prozess</a>

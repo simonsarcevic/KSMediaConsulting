@@ -1,13 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Josefin+Sans:wght@600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 :root {
-  --ivory: #f6f1e7;
-  --linen: #e3dfd3;
-  --sage: #5f6b5c;
-  --sage-light: #8e9a8b;
-  --platinum: #8a877f;
-  --platinum-light: #d4d1ca;
-  --slate: #5a5853;
-  --graphite: #2e2d2a;
+  --ivory: #fbf8f2;
+  --linen: #e6e1d7;
+  --sage: #435143;
+  --sage-light: #667366;
+  --platinum: #706d67;
+  --platinum-light: #ebe9e4;
+  --slate: #4b4a46;
+  --graphite: #242320;
+  --focus: #0759c7;
+}
+:root[data-a11y-text] {
+  font-size: 125%;
+}
+:root[data-a11y-contrast] {
+  --ivory: #ffffff;
+  --linen: #ffffff;
+  --sage: #000000;
+  --sage-light: #000000;
+  --platinum: #1a1a1a;
+  --platinum-light: #ffffff;
+  --slate: #000000;
+  --graphite: #000000;
+  --focus: #005fcc;
 }
 * {
   box-sizing: border-box;
@@ -20,7 +35,7 @@ body {
   background: var(--ivory);
   color: var(--graphite);
   font:
-    400 14px/1.58 Figtree,
+    400 1rem/1.58 Figtree,
     Arial,
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,6 +43,34 @@ body {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+button,
+input,
+textarea,
+summary {
+  font: inherit;
+}
+:where(a, button, input, textarea, summary):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--ivory);
+}
+:root[data-a11y-contrast] :where(a, button, input, textarea, summary):focus-visible {
+  outline-color: #005fcc;
+  box-shadow: 0 0 0 6px #ffde59;
+}
+:root[data-a11y-links] a:not(.button):not(.brand) {
+  text-decoration: underline !important;
+  text-decoration-thickness: 0.12em !important;
+  text-underline-offset: 0.2em !important;
+}
+p,
+li,
+span,
+a,
+button,
+label {
+  overflow-wrap: anywhere;
 }
 button:active,
 a:active {
@@ -41,7 +84,7 @@ a:active {
   margin: 0;
   color: var(--sage);
   font:
-    600 0.66rem 'Josefin Sans',
+    600 0.75rem 'Josefin Sans',
     sans-serif;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -79,5 +122,25 @@ h3 {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+:root[data-a11y-motion] {
+  scroll-behavior: auto;
+}
+:root[data-a11y-motion] *,
+:root[data-a11y-motion] *::before,
+:root[data-a11y-motion] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+:root[data-a11y-motion] .reveal {
+  opacity: 1;
+  transform: none;
+}
+@media (max-width: 420px) {
+  br {
+    display: none;
   }
 }

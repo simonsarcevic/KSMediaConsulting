@@ -37,6 +37,7 @@ nav a {
   color: var(--graphite);
   text-decoration: none;
   font-size: 0.86rem;
+  padding: 10px 2px;
 }
 nav a::after {
   content: '';
@@ -54,6 +55,7 @@ nav a:hover::after {
   border: 0;
   border-radius: 3px;
   padding: 11px 16px;
+  min-height: 44px;
   background: var(--sage);
   color: var(--ivory);
   font:
@@ -91,6 +93,8 @@ nav a:hover::after {
     border: 0;
     background: transparent;
     padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
     cursor: pointer;
     z-index: 2;
   }
@@ -107,10 +111,14 @@ nav a:hover::after {
     flex-direction: column;
     align-items: flex-start;
     transform: translateY(-105%);
+    visibility: hidden;
+    pointer-events: none;
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   nav.open {
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
   }
   nav a {
     font-family: 'Libre Caslon Text', serif;

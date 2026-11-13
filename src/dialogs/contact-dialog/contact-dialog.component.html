@@ -4,21 +4,22 @@
   [class.closing]="closing()"
   (cancel)="$event.preventDefault(); close()"
   (click)="$event.target === dialog && close()"
+  [attr.aria-labelledby]="sent() ? 'contact-success-title' : 'contact-dialog-title'"
+  [attr.aria-describedby]="sent() ? 'contact-success-description' : 'contact-dialog-description'"
 >
   <div class="panel">
     <button class="close" type="button" (click)="close()" aria-label="Dialog schließen"></button>
     @if (!sent()) {
       <p class="eyebrow">Projektanfrage</p>
-      <h2>Erzähl uns von<br />deiner Idee.</h2>
-      <p class="lead">Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.</p>
-      <form
-        [formGroup]="formGroup"
-        (keydown.enter)="$event.preventDefault(); submit()"
-        novalidate
-      >
-        <label>
-          <span>Name</span>
+      <h2 id="contact-dialog-title">Erzähl uns von<br />deiner Idee.</h2>
+      <p class="lead" id="contact-dialog-description">
+        Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.
+      </p>
+      <form #contactForm [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
+        <div class="field" [class.invalid]="fieldInvalid('name')">
+          <label for="contact-name">Name <span aria-hidden="true">*</span></label>
           <input
+            id="contact-name"
             name="name"
             type="text"
             autocomplete="name"
@@ -26,12 +27,24 @@
             maxlength="120"
             placeholder="Wie dürfen wir dich ansprechen?"
             [formControl]="formGroup.controls.name"
-            [attr.aria-invalid]="formGroup.controls.name.invalid && formGroup.controls.name.touched"
+            [attr.aria-invalid]="fieldInvalid('name')"
+            [attr.aria-describedby]="fieldInvalid('name') ? 'name-help name-error' : 'name-help'"
+            [attr.aria-errormessage]="fieldInvalid('name') ? 'name-error' : null"
           />
-        </label>
-        <label>
-          <span>E-Mail</span>
+          <span class="field-help" id="name-help">Pflichtfeld</span>
+          @if (fieldInvalid('name')) {
+            <span class="field-error" id="name-error">
+              @if (hasError('name', 'required')) { Bitte gib deinen Namen ein. } @else {
+                Der Name ist zu lang.
+              }
+            </span>
+          }
+        </div>
+
+        <div class="field" [class.invalid]="fieldInvalid('email')">
+          <label for="contact-email">E-Mail <span aria-hidden="true">*</span></label>
           <input
+            id="contact-email"
             name="email"
             type="email"
             autocomplete="email"
@@ -39,21 +52,44 @@
             maxlength="254"
             placeholder="name@unternehmen.de"
             [formControl]="formGroup.controls.email"
-            [attr.aria-invalid]="formGroup.controls.email.invalid && formGroup.controls.email.touched"
+            [attr.aria-invalid]="fieldInvalid('email')"
+            [attr.aria-describedby]="fieldInvalid('email') ? 'email-help email-error' : 'email-help'"
+            [attr.aria-errormessage]="fieldInvalid('email') ? 'email-error' : null"
           />
-        </label>
-        <label>
-          <span>Worum geht es?</span>
+          <span class="field-help" id="email-help">Pflichtfeld, Format: name@beispiel.de</span>
+          @if (fieldInvalid('email')) {
+            <span class="field-error" id="email-error">
+              @if (hasError('email', 'required')) { Bitte gib deine E-Mail-Adresse ein. } @else {
+                Bitte gib eine gültige E-Mail-Adresse ein, zum Beispiel name@beispiel.de.
+              }
+            </span>
+          }
+        </div>
+
+        <div class="field" [class.invalid]="fieldInvalid('subject')">
+          <label for="contact-subject">Worum geht es? <span aria-hidden="true">*</span></label>
           <textarea
+            id="contact-subject"
             name="subject"
             rows="3"
             required
             maxlength="4000"
             placeholder="Website, Social Media, Markenauftritt …"
             [formControl]="formGroup.controls.subject"
-            [attr.aria-invalid]="formGroup.controls.subject.invalid && formGroup.controls.subject.touched"
+            [attr.aria-invalid]="fieldInvalid('subject')"
+            [attr.aria-describedby]="
+              fieldInvalid('subject') ? 'subject-help subject-error' : 'subject-help'
+            "
+            [attr.aria-errormessage]="fieldInvalid('subject') ? 'subject-error' : null"
           ></textarea>
-        </label>
+          <span class="field-help" id="subject-help">Pflichtfeld, maximal 4.000 Zeichen</span>
+          @if (fieldInvalid('subject')) {
+            <span class="field-error" id="subject-error">
+              Bitte beschreibe kurz, wobei wir dich unterstützen dürfen.
+            </span>
+          }
+        </div>
+
         <label class="honeypot" aria-hidden="true">
           <span>Website</span>
           <input
@@ -65,9 +101,18 @@
           />
         </label>
         @if (sendError()) {
-          <p class="form-error" role="alert">{{ sendError() }}</p>
+          <p class="form-error" role="alert" tabindex="-1">{{ sendError() }}</p>
         }
-        <button class="submit" type="button" [disabled]="sending()" (click)="submit()">
+        <p class="screen-reader-status" aria-live="polite">
+          {{ sending() ? 'Die Anfrage wird versendet.' : '' }}
+        </p>
+        <button
+          class="submit"
+          type="submit"
+          [disabled]="sending()"
+          [attr.aria-busy]="sending()"
+          (click)="$event.preventDefault(); submit()"
+        >
           <span>{{ sending() ? 'Wird versendet …' : 'Anfrage senden' }}</span>
           <span aria-hidden="true">↗</span>
         </button>
@@ -77,8 +122,12 @@
       <div class="success">
         <img src="/assets/brand/ks-signet.svg" alt="" />
         <p class="eyebrow">Vielen Dank</p>
-        <h2>Das klingt nach<br />einem guten Anfang.</h2>
-        <p>Deine Anfrage wurde erfolgreich versendet. Wir melden uns persönlich bei dir.</p>
+        <h2 id="contact-success-title" #successHeading tabindex="-1">
+          Das klingt nach<br />einem guten Anfang.
+        </h2>
+        <p id="contact-success-description" role="status">
+          Deine Anfrage wurde erfolgreich versendet. Wir melden uns persönlich bei dir.
+        </p>
         <button class="submit" type="button" (click)="close()">Zurück zur Website</button>
       </div>
     }

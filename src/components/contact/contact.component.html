@@ -1,13 +1,13 @@
-<section id="kontakt" class="section contact" appReveal>
+<section id="kontakt" class="section contact" appReveal aria-labelledby="contact-title">
   <p class="eyebrow">Kontakt</p>
-  <h2>Gute Projekte beginnen<br />mit einem Gespräch.</h2>
+  <h2 id="contact-title">Gute Projekte beginnen<br />mit einem Gespräch.</h2>
   <div class="contact-row">
     <p>
       Du hast eine Idee, eine Herausforderung oder einfach das Gefühl, dass dein Auftritt mehr kann?
       Erzähl uns davon.
     </p>
     <button type="button" (click)="contactClick.emit()">
-      <span>Projekt anfragen</span><b>↗</b>
+      <span>Projekt anfragen</span><b aria-hidden="true">↗</b>
     </button>
   </div>
 </section>

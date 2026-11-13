@@ -16,6 +16,8 @@ export class ContactDialogComponent {
   protected readonly closing = signal(false);
   protected readonly visible = signal(false);
   private readonly dialog = viewChild<ElementRef<HTMLDialogElement>>('dialog');
+  private readonly contactForm = viewChild<ElementRef<HTMLFormElement>>('contactForm');
+  private readonly successHeading = viewChild<ElementRef<HTMLHeadingElement>>('successHeading');
   protected readonly formGroup = new FormGroup({
     name: new FormControl('', {
       nonNullable: true,
@@ -74,8 +76,13 @@ export class ContactDialogComponent {
     if (this.formGroup.invalid || this.sending()) {
       this.formGroup.markAllAsTouched();
       this.sendError.set(
-        'Bitte fülle deinen Namen, eine gültige E-Mail-Adresse und deine Anfrage aus.',
+        'Bitte prüfe die markierten Felder. Die Hinweise direkt an den Feldern helfen dir bei der Korrektur.',
       );
+      requestAnimationFrame(() => {
+        this.contactForm()
+          ?.nativeElement.querySelector<HTMLElement>('[aria-invalid="true"]')
+          ?.focus();
+      });
       return;
     }
 
@@ -94,6 +101,7 @@ export class ContactDialogComponent {
       }
 
       this.sent.set(true);
+      requestAnimationFrame(() => this.successHeading()?.nativeElement.focus());
     } catch {
       this.sendError.set(
         'Die Anfrage konnte gerade nicht versendet werden. Bitte versuche es gleich noch einmal.',
@@ -101,5 +109,15 @@ export class ContactDialogComponent {
     } finally {
       this.sending.set(false);
     }
+  }
+
+  protected fieldInvalid(field: 'name' | 'email' | 'subject'): boolean {
+    const control = this.formGroup.controls[field];
+    return control.touched && control.invalid;
+  }
+
+  protected hasError(field: 'name' | 'email' | 'subject', error: string): boolean {
+    const control = this.formGroup.controls[field];
+    return control.touched && control.hasError(error);
   }
 }
