@@ -3,6 +3,7 @@
 # Compiled output
 /dist
 /tmp
+/outputs
 /out-tsc
 /bazel-out
 
@@ -38,6 +39,11 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+
+# Local environment values
+.env
+.env.*
+!.env.example
 
 # System files
 .DS_Store

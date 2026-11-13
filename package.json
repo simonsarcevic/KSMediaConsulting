@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node scripts/build-worker.mjs",
+    "build:client": "ng build",
+    "test:worker": "node scripts/test-worker.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

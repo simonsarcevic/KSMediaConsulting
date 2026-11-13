@@ -11,7 +11,7 @@
       <p class="eyebrow">Projektanfrage</p>
       <h2>Erzähl uns von<br />deiner Idee.</h2>
       <p class="lead">Ein paar Eckdaten genügen. Wir melden uns persönlich bei dir zurück.</p>
-      <form (ngSubmit)="submit()">
+      <form [formGroup]="formGroup" (ngSubmit)="submit()" novalidate>
         <label>
           <span>Name</span>
           <input
@@ -19,7 +19,9 @@
             type="text"
             autocomplete="name"
             required
+            maxlength="120"
             placeholder="Wie dürfen wir dich ansprechen?"
+            [formControl]="formGroup.controls.name"
           />
         </label>
         <label>
@@ -29,32 +31,47 @@
             type="email"
             autocomplete="email"
             required
+            maxlength="254"
             placeholder="name@unternehmen.de"
+            [formControl]="formGroup.controls.email"
           />
         </label>
         <label>
           <span>Worum geht es?</span>
           <textarea
-            name="message"
+            name="subject"
             rows="3"
             required
+            maxlength="4000"
             placeholder="Website, Social Media, Markenauftritt …"
+            [formControl]="formGroup.controls.subject"
           ></textarea>
         </label>
-        <button class="submit" type="submit">Anfrage vorbereiten <span>↗</span></button>
+        <label class="honeypot" aria-hidden="true">
+          <span>Website</span>
+          <input
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off"
+            [formControl]="formGroup.controls.website"
+          />
+        </label>
+        @if (sendError()) {
+          <p class="form-error" role="alert">{{ sendError() }}</p>
+        }
+        <button class="submit" type="submit" [disabled]="sending()">
+          <span>{{ sending() ? 'Wird versendet …' : 'Anfrage senden' }}</span>
+          <span aria-hidden="true">↗</span>
+        </button>
       </form>
-      <small
-        >Hinweis: Das Formular ist als Website-Demo angelegt und versendet noch keine Daten.</small
-      >
+      <small>Deine Angaben werden ausschließlich zur Bearbeitung deiner Anfrage verwendet.</small>
     } @else {
       <div class="success">
         <img src="/assets/brand/ks-signet.svg" alt="" />
         <p class="eyebrow">Vielen Dank</p>
         <h2>Das klingt nach<br />einem guten Anfang.</h2>
-        <p>
-          Die Anfrage wurde in dieser Demo erfasst. Für den Live-Betrieb kann hier dein gewünschter
-          Formular-Service angebunden werden.
-        </p>
+        <p>Deine Anfrage wurde erfolgreich versendet. Wir melden uns persönlich bei dir.</p>
         <button class="submit" type="button" (click)="close()">Zurück zur Website</button>
       </div>
     }

@@ -189,6 +189,27 @@ textarea::placeholder {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(46, 45, 42, 0.16);
 }
+.submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+  box-shadow: none;
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.form-error {
+  margin: -2px 0 0;
+  color: #9a3535;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
 small {
   display: block;
   color: var(--slate);

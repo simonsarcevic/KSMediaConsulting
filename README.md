@@ -1,5 +1,16 @@
 # KSMediaConsulting
 
+## Kontaktformular und Resend
+
+Das Kontaktformular sendet an den serverseitigen Endpunkt `/api/contact`. Der Resend-Schlüssel
+wird ausschließlich als Runtime-Secret `RESEND_API_KEY` gesetzt und darf nicht in Angular-Code,
+Git oder Build-Dateien gespeichert werden. Die verfügbaren Variablennamen stehen in
+`.env.example`.
+
+`CONTACT_FROM_EMAIL` muss bei Resend als Absender verifiziert sein. Für einen ersten Test kann
+`K&S Media Consulting <onboarding@resend.dev>` verwendet werden; dieser Resend-Testabsender kann
+nur an die E-Mail-Adresse des Resend-Kontos senden.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
 
 ## Development server
