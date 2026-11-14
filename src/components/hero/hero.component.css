@@ -1,8 +1,10 @@
 .hero {
   min-height: min(100svh, 820px);
   padding: 124px clamp(24px, 6vw, 96px) 54px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
   align-items: center;
+  gap: clamp(36px, 6vw, 88px);
   position: relative;
   background: radial-gradient(circle at 15% 24%, rgba(227, 223, 211, 0.55), transparent 32%);
 }
@@ -11,7 +13,8 @@
     radial-gradient(circle at 14% 22%, rgba(169, 191, 165, 0.075), transparent 34%),
     linear-gradient(135deg, #171a17 0%, #111411 100%);
 }
-.hero-copy {
+.hero-copy,
+.hero-visual {
   z-index: 1;
 }
 .hero-copy {
@@ -82,9 +85,92 @@ h1 em {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(46, 45, 42, 0.14);
 }
+.hero-visual {
+  height: min(58vh, 560px);
+  min-height: 380px;
+  position: relative;
+  background: var(--sage);
+  overflow: hidden;
+  box-shadow: 18px 18px 0 rgba(227, 223, 211, 0.72);
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 67% 36%, rgba(246, 241, 231, 0.22), transparent 31%),
+    linear-gradient(145deg, transparent 42%, rgba(46, 45, 42, 0.2));
+}
+.focus-frame {
+  position: absolute;
+  inset: 20% 14%;
+}
+.focus-frame span {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-color: var(--ivory);
+  border-style: solid;
+  opacity: 0.9;
+}
+.focus-frame span:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+.focus-frame span:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+.focus-frame span:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+.focus-frame span:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+.focus-frame i {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ivory);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 3.4s ease-in-out infinite;
+}
+.visual-note {
+  position: absolute;
+  inset: auto 21px 19px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ivory);
+  font:
+    600 0.61rem 'Josefin Sans',
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+@keyframes pulse {
+  50% {
+    transform: translate(-50%, -50%) scale(1.55);
+    opacity: 0.5;
+  }
+}
 @media (max-width: 900px) {
   .hero {
+    grid-template-columns: 1fr;
     padding-top: 108px;
+  }
+  .hero-visual {
+    height: 42vh;
+    min-height: 320px;
+    box-shadow: 10px 10px 0 rgba(227, 223, 211, 0.72);
   }
 }
 @media (max-width: 520px) {
