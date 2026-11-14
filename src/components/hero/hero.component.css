@@ -89,7 +89,7 @@ h1 em {
   height: min(58vh, 560px);
   min-height: 380px;
   position: relative;
-  background: var(--sage);
+  background: var(--sage-light);
   overflow: hidden;
   box-shadow: 18px 18px 0 rgba(227, 223, 211, 0.72);
 }
@@ -156,12 +156,6 @@ h1 em {
     sans-serif;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-.visual-note span:last-child {
-  padding: 6px 8px;
-  border-radius: 2px;
-  background: var(--ivory);
-  color: var(--sage);
 }
 @keyframes pulse {
   50% {
