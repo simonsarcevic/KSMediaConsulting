@@ -19,6 +19,11 @@
   background-size: 72px 72px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 78%);
 }
+:host-context([data-theme='dark']) .hero {
+  background:
+    radial-gradient(circle at 14% 22%, rgba(169, 191, 165, 0.075), transparent 34%),
+    linear-gradient(135deg, #171a17 0%, #111411 100%);
+}
 .hero-copy,
 .hero-visual {
   z-index: 1;
@@ -77,6 +82,12 @@ h1 em {
   background: rgba(246, 241, 231, 0.65);
   color: var(--sage);
   backdrop-filter: blur(8px);
+}
+:host-context([data-theme='dark']) .secondary {
+  border-color: var(--sage);
+  background: rgba(169, 191, 165, 0.055);
+  color: var(--graphite);
+  backdrop-filter: none;
 }
 .button:hover {
   background: var(--graphite);
