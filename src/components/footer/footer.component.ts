@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   AccessibilityPreference,
   AccessibilitySettingsService,
@@ -11,6 +11,11 @@ import {
 export class FooterComponent {
   protected readonly year = new Date().getFullYear();
   protected readonly settings = inject(AccessibilitySettingsService);
+  protected readonly settingsOpen = signal(false);
+
+  protected toggleSettings(): void {
+    this.settingsOpen.update((open) => !open);
+  }
 
   protected update(preference: AccessibilityPreference, event: Event): void {
     this.settings.set(preference, (event.target as HTMLInputElement).checked);

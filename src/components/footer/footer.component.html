@@ -5,53 +5,80 @@
       >Nach oben <span aria-hidden="true">↑</span></a
     >
   </div>
-  <details class="accessibility-settings">
-    <summary>Darstellung & Barrierefreiheit</summary>
-    <div class="settings-panel">
-      <p id="a11y-settings-description">
-        Passe die Darstellung an deine Bedürfnisse an. Die Auswahl wird nur in deinem Browser
-        gespeichert.
-      </p>
-      <fieldset aria-describedby="a11y-settings-description">
-        <legend>Optionale Darstellungshilfen</legend>
-        <label>
-          <input
-            type="checkbox"
-            [checked]="settings.highContrast()"
-            (change)="update('contrast', $event)"
-          />
-          <span><strong>Kontrast verstärken</strong><small>Schwarz-Weiß-Darstellung</small></span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            [checked]="settings.largeText()"
-            (change)="update('text', $event)"
-          />
-          <span><strong>Schrift vergrößern</strong><small>25 % größere Grundschrift</small></span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            [checked]="settings.reducedMotion()"
-            (change)="update('motion', $event)"
-          />
-          <span><strong>Bewegung reduzieren</strong><small>Animationen ausschalten</small></span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            [checked]="settings.underlinedLinks()"
-            (change)="update('links', $event)"
-          />
-          <span><strong>Links unterstreichen</strong><small>Links deutlicher markieren</small></span>
-        </label>
-      </fieldset>
-      <button type="button" class="reset" (click)="settings.reset()">
-        Einstellungen zurücksetzen
-      </button>
+  <section class="accessibility-settings" aria-labelledby="accessibility-settings-label">
+    <button
+      class="settings-toggle"
+      type="button"
+      [attr.aria-expanded]="settingsOpen()"
+      aria-controls="accessibility-settings-panel"
+      (click)="toggleSettings()"
+    >
+      <span id="accessibility-settings-label">Darstellung & Barrierefreiheit</span>
+      <span class="toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div
+      id="accessibility-settings-panel"
+      class="settings-reveal"
+      [class.open]="settingsOpen()"
+      [attr.aria-hidden]="!settingsOpen()"
+    >
+      <div class="settings-clip" [attr.inert]="settingsOpen() ? null : ''">
+        <div class="settings-panel">
+          <p id="a11y-settings-description">
+            Passe die Darstellung an deine Bedürfnisse an. Die Auswahl wird nur in deinem Browser
+            gespeichert.
+          </p>
+          <fieldset aria-describedby="a11y-settings-description">
+            <legend>Optionale Darstellungshilfen</legend>
+            <label>
+              <input
+                type="checkbox"
+                [checked]="settings.highContrast()"
+                (change)="update('contrast', $event)"
+              />
+              <span
+                ><strong>Kontrast verstärken</strong><small>Schwarz-Weiß-Darstellung</small></span
+              >
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                [checked]="settings.largeText()"
+                (change)="update('text', $event)"
+              />
+              <span
+                ><strong>Schrift vergrößern</strong><small>25 % größere Grundschrift</small></span
+              >
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                [checked]="settings.reducedMotion()"
+                (change)="update('motion', $event)"
+              />
+              <span
+                ><strong>Bewegung reduzieren</strong><small>Animationen ausschalten</small></span
+              >
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                [checked]="settings.underlinedLinks()"
+                (change)="update('links', $event)"
+              />
+              <span
+                ><strong>Links unterstreichen</strong
+                ><small>Links deutlicher markieren</small></span
+              >
+            </label>
+          </fieldset>
+          <button type="button" class="reset" (click)="settings.reset()">
+            Einstellungen zurücksetzen
+          </button>
+        </div>
+      </div>
     </div>
-  </details>
+  </section>
   <div class="bottom">
     <span>© {{ year }} KS Media Consulting</span>
     <span>Impressum · Datenschutz</span>

@@ -89,7 +89,7 @@ export function createContactServer({ env = process.env, fetchImpl = fetch } = {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          from: env.CONTACT_FROM_EMAIL || 'K&S Media Consulting <onboarding@resend.dev>',
+          from: env.CONTACT_FROM_EMAIL || 'KS Media Consulting <noreply@KSMediaConsulting.de>',
           to: [env.CONTACT_TO_EMAIL || 'sarcevicsimon07@gmail.com'],
           reply_to: email,
           subject: `Neue Projektanfrage von ${name}`,
@@ -98,7 +98,17 @@ export function createContactServer({ env = process.env, fetchImpl = fetch } = {
       });
 
       if (!resendResponse.ok) {
-        console.error(`Resend-Anfrage fehlgeschlagen (${resendResponse.status}).`);
+        const resendErrorBody = await resendResponse.text();
+        let resendError = resendErrorBody;
+        try {
+          const parsedError = JSON.parse(resendErrorBody);
+          resendError = parsedError.message || parsedError.name || resendErrorBody;
+        } catch {
+          // Keep the plain response text when Resend did not return JSON.
+        }
+        console.error(
+          `Resend-Anfrage fehlgeschlagen (${resendResponse.status}): ${resendError || 'Keine Details'}`,
+        );
         json(response, 502, { error: 'Email delivery failed' });
         return;
       }

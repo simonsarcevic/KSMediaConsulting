@@ -28,8 +28,20 @@ describe('App', () => {
 
     expect(compiled.querySelector('.skip-link')?.getAttribute('href')).toBe('#main-content');
     expect(compiled.querySelector('main')?.id).toBe('main-content');
-    expect(compiled.querySelectorAll('.accessibility-settings input[type="checkbox"]')).toHaveLength(
-      4,
-    );
+    expect(
+      compiled.querySelectorAll('.accessibility-settings input[type="checkbox"]'),
+    ).toHaveLength(4);
+
+    const toggle = compiled.querySelector('.settings-toggle') as HTMLButtonElement;
+    const panel = compiled.querySelector('#accessibility-settings-panel') as HTMLElement;
+    const clip = compiled.querySelector('.settings-clip') as HTMLElement;
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(panel.getAttribute('aria-hidden')).toBe('true');
+    expect(clip.hasAttribute('inert')).toBe(true);
+    toggle.click();
+    fixture.detectChanges();
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(panel.getAttribute('aria-hidden')).toBe('false');
+    expect(clip.hasAttribute('inert')).toBe(false);
   });
 });

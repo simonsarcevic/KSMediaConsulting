@@ -85,7 +85,7 @@ async function handleContact(request, env) {
       'content-type': 'application/json',
     },
     body: JSON.stringify({
-      from: env.CONTACT_FROM_EMAIL || 'K&S Media Consulting <onboarding@resend.dev>',
+      from: env.CONTACT_FROM_EMAIL || 'KS Media Consulting <noreply@KSMediaConsulting.de>',
       to: [env.CONTACT_TO_EMAIL || 'sarcevicsimon07@gmail.com'],
       reply_to: email,
       subject: `Neue Projektanfrage von ${name}`,
@@ -94,7 +94,17 @@ async function handleContact(request, env) {
   });
 
   if (!resendResponse.ok) {
-    console.error(`Resend request failed with status ${resendResponse.status}`);
+    const resendErrorBody = await resendResponse.text();
+    let resendError = resendErrorBody;
+    try {
+      const parsedError = JSON.parse(resendErrorBody);
+      resendError = parsedError.message || parsedError.name || resendErrorBody;
+    } catch {
+      // Keep the plain response text when Resend did not return JSON.
+    }
+    console.error(
+      `Resend request failed with status ${resendResponse.status}: ${resendError || 'No details'}`,
+    );
     return json({ error: 'Email delivery failed' }, 502);
   }
 
