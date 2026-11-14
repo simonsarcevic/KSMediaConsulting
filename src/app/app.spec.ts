@@ -37,6 +37,7 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Digital, aber');
+    expect(compiled.querySelector('.hero-visual')).toBeNull();
   });
 
   it('provides a skip link and optional accessibility settings', async () => {
