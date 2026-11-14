@@ -148,6 +148,7 @@ h1 em {
   position: absolute;
   inset: auto 21px 19px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   color: var(--ivory);
   font:
@@ -155,6 +156,12 @@ h1 em {
     sans-serif;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+}
+.visual-note span:last-child {
+  padding: 6px 8px;
+  border-radius: 2px;
+  background: var(--ivory);
+  color: var(--sage);
 }
 @keyframes pulse {
   50% {
