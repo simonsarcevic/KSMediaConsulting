@@ -1,4 +1,9 @@
-<a class="skip-link" routerLink="/datenschutz" fragment="main-content">Direkt zum Hauptinhalt</a>
+<a
+  class="skip-link"
+  href="/datenschutz#main-content"
+  (click)="scrollToSection($event, 'main-content')"
+  >Direkt zum Hauptinhalt</a
+>
 <div class="privacy-page">
   <header class="legal-header">
     <a routerLink="/" class="brand" aria-label="KS Media Consulting – Startseite">
@@ -28,15 +33,25 @@
     <div class="legal-layout">
       <nav class="contents" aria-label="Inhaltsübersicht">
         <p>Auf dieser Seite</p>
-        <a routerLink="/datenschutz" fragment="verantwortlicher">Verantwortlicher</a>
-        <a routerLink="/datenschutz" fragment="hosting">Hosting und Serverdaten</a>
-        <a routerLink="/datenschutz" fragment="kontaktformular">Kontaktformular</a>
-        <a routerLink="/datenschutz" fragment="einstellungen">Lokale Einstellungen</a>
-        <a routerLink="/datenschutz" fragment="rechte">Deine Rechte</a>
+        <a
+          href="/datenschutz#verantwortlicher"
+          (click)="scrollToSection($event, 'verantwortlicher')"
+          >Verantwortlicher</a
+        >
+        <a href="/datenschutz#hosting" (click)="scrollToSection($event, 'hosting')"
+          >Hosting und Serverdaten</a
+        >
+        <a href="/datenschutz#kontaktformular" (click)="scrollToSection($event, 'kontaktformular')"
+          >Kontaktformular</a
+        >
+        <a href="/datenschutz#einstellungen" (click)="scrollToSection($event, 'einstellungen')"
+          >Lokale Einstellungen</a
+        >
+        <a href="/datenschutz#rechte" (click)="scrollToSection($event, 'rechte')">Deine Rechte</a>
       </nav>
 
       <article class="legal-content">
-        <section id="verantwortlicher" aria-labelledby="heading-verantwortlicher">
+        <section id="verantwortlicher" tabindex="-1" aria-labelledby="heading-verantwortlicher">
           <p class="section-number">01</p>
           <h2 id="heading-verantwortlicher">Verantwortlicher</h2>
           <p>Verantwortlich für die Verarbeitung personenbezogener Daten auf dieser Website ist:</p>
@@ -51,7 +66,7 @@
           </p>
         </section>
 
-        <section id="hosting" aria-labelledby="heading-hosting">
+        <section id="hosting" tabindex="-1" aria-labelledby="heading-hosting">
           <p class="section-number">02</p>
           <h2 id="heading-hosting">Hosting und technische Bereitstellung</h2>
           <p>
@@ -83,7 +98,7 @@
           </p>
         </section>
 
-        <section id="kontaktformular" aria-labelledby="heading-kontaktformular">
+        <section id="kontaktformular" tabindex="-1" aria-labelledby="heading-kontaktformular">
           <p class="section-number">03</p>
           <h2 id="heading-kontaktformular">Kontaktformular und E-Mail-Versand</h2>
           <p>
@@ -116,7 +131,7 @@
           </p>
         </section>
 
-        <section id="einstellungen" aria-labelledby="heading-einstellungen">
+        <section id="einstellungen" tabindex="-1" aria-labelledby="heading-einstellungen">
           <p class="section-number">04</p>
           <h2 id="heading-einstellungen">Lokale Darstellungs­einstellungen</h2>
           <p>
@@ -136,7 +151,7 @@
           </p>
         </section>
 
-        <section id="rechte" aria-labelledby="heading-rechte">
+        <section id="rechte" tabindex="-1" aria-labelledby="heading-rechte">
           <p class="section-number">05</p>
           <h2 id="heading-rechte">Deine Datenschutzrechte</h2>
           <p>Nach Maßgabe der DSGVO hast du insbesondere das Recht auf:</p>

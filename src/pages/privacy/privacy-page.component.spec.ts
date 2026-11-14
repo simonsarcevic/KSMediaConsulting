@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { vi } from 'vitest';
 import { PrivacyPageComponent } from './privacy-page.component';
 
 describe('PrivacyPageComponent', () => {
@@ -36,5 +37,18 @@ describe('PrivacyPageComponent', () => {
       '/datenschutz#einstellungen',
       '/datenschutz#rechte',
     ]);
+
+    const responsibleSection = page.querySelector<HTMLElement>('#verantwortlicher')!;
+    responsibleSection.scrollIntoView = vi.fn();
+    const responsibleLink = page.querySelector<HTMLAnchorElement>(
+      '.contents a[href="/datenschutz#verantwortlicher"]',
+    )!;
+    responsibleLink.click();
+
+    expect(responsibleSection.scrollIntoView).toHaveBeenCalledWith({
+      behavior: 'smooth',
+      block: 'start',
+    });
+    expect(document.activeElement).toBe(responsibleSection);
   });
 });
