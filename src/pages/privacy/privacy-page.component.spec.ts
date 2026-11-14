@@ -23,5 +23,7 @@ describe('PrivacyPageComponent', () => {
     expect(page.querySelector('h1')?.textContent).toContain('Datenschutzerklärung');
     expect(page.querySelector('main')?.id).toBe('main-content');
     expect(page.querySelector('a[href^="mailto:"]')).toBeTruthy();
+    expect(page.textContent).toContain('IONOS SE');
+    expect(page.textContent).not.toContain('OpenAI Sites');
   });
 });
