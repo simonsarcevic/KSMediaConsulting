@@ -173,6 +173,14 @@ label small {
   gap: 20px;
   font-size: 0.8rem;
 }
+.legal-links {
+  display: flex;
+  gap: 18px;
+}
+.legal-links a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
 @media (max-width: 650px) {
   fieldset {
     grid-template-columns: 1fr;

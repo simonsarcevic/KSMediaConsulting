@@ -1,0 +1,199 @@
+:host {
+  display: block;
+}
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 10px;
+  left: 10px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  background: var(--graphite);
+  color: var(--ivory);
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-180%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.privacy-page {
+  min-height: 100vh;
+  background: var(--ivory);
+  color: var(--graphite);
+}
+.legal-header {
+  min-height: 88px;
+  padding: 18px clamp(24px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--sage-light);
+}
+.brand img {
+  display: block;
+  width: 176px;
+  height: auto;
+}
+.back-link {
+  color: var(--graphite);
+  font-weight: 600;
+  text-decoration: none;
+}
+.back-link span {
+  margin-right: 7px;
+}
+main {
+  padding: clamp(68px, 8vw, 120px) clamp(24px, 6vw, 96px) clamp(80px, 10vw, 150px);
+}
+.legal-hero,
+.legal-layout {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+}
+.legal-hero {
+  padding-bottom: clamp(54px, 7vw, 92px);
+  border-bottom: 1px solid var(--sage-light);
+}
+h1 {
+  max-width: 850px;
+  margin: 24px 0 28px;
+  font:
+    400 clamp(3.1rem, 7vw, 6.7rem)/0.94 'Libre Caslon Text',
+    serif;
+  letter-spacing: -0.055em;
+}
+.intro {
+  max-width: 720px;
+  color: var(--slate);
+  font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+  line-height: 1.65;
+}
+.updated {
+  margin: 28px 0 0;
+  color: var(--sage);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.legal-layout {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(42px, 8vw, 110px);
+  padding-top: clamp(50px, 7vw, 86px);
+}
+.contents {
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  display: grid;
+  gap: 8px;
+}
+.contents p {
+  margin: 0 0 10px;
+  color: var(--sage);
+  font-weight: 700;
+}
+.contents a {
+  width: fit-content;
+  padding-block: 4px;
+  color: var(--slate);
+  text-decoration: none;
+}
+.contents a:hover {
+  color: var(--graphite);
+}
+.legal-content section {
+  scroll-margin-top: 30px;
+  padding: 0 0 clamp(48px, 7vw, 78px);
+}
+.legal-content section + section {
+  padding-top: clamp(48px, 7vw, 78px);
+  border-top: 1px solid var(--sage-light);
+}
+.section-number {
+  margin: 0 0 18px;
+  color: var(--sage);
+  font:
+    600 0.75rem 'Josefin Sans',
+    sans-serif;
+  letter-spacing: 0.2em;
+}
+h2 {
+  margin: 0 0 25px;
+  font:
+    400 clamp(2rem, 3vw, 3.1rem)/1.06 'Libre Caslon Text',
+    serif;
+  letter-spacing: -0.04em;
+}
+.legal-content p,
+.legal-content li,
+address {
+  color: var(--slate);
+  line-height: 1.78;
+}
+.legal-content p {
+  margin: 0 0 18px;
+}
+.legal-content a {
+  color: var(--graphite);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+address {
+  margin: 24px 0;
+  padding: 19px 22px;
+  border-left: 3px solid var(--sage);
+  background: var(--linen);
+  font-style: normal;
+}
+ul {
+  margin: 18px 0 24px;
+  padding-left: 1.25em;
+}
+li + li {
+  margin-top: 8px;
+}
+.provider-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px !important;
+}
+.provider-links a {
+  padding: 9px 12px;
+  border: 1px solid var(--sage-light);
+  border-radius: 3px;
+  text-decoration: none;
+}
+.provider-links a:hover {
+  background: var(--linen);
+}
+@media (max-width: 760px) {
+  .legal-header {
+    min-height: 72px;
+  }
+  .brand img {
+    width: 145px;
+  }
+  .legal-layout {
+    grid-template-columns: 1fr;
+  }
+  .contents {
+    position: static;
+    padding: 18px;
+    border: 1px solid var(--sage-light);
+    border-radius: 3px;
+    background: var(--linen);
+  }
+}
+@media (max-width: 480px) {
+  .legal-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  h1 {
+    font-size: clamp(2.7rem, 14vw, 4rem);
+  }
+}

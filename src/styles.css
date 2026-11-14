@@ -1,4 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Josefin+Sans:wght@600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
+@font-face {
+  font-family: 'Figtree';
+  src: url('/assets/fonts/figtree-400.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Figtree';
+  src: url('/assets/fonts/figtree-500.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Figtree';
+  src: url('/assets/fonts/figtree-600.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('/assets/fonts/josefin-sans-600.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('/assets/fonts/libre-caslon-text-400.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('/assets/fonts/libre-caslon-text-400-italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('/assets/fonts/libre-caslon-text-700.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
 :root {
   --ivory: #fbf8f2;
   --linen: #e6e1d7;

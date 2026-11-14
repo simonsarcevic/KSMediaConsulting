@@ -20,7 +20,7 @@ import { AccessibilitySettingsService } from '../services/accessibility-settings
     FooterComponent,
     ContactDialogComponent,
   ],
-  selector: 'app-root',
+  selector: 'app-home',
   styleUrl: './app.css',
   templateUrl: './app.html',
 })

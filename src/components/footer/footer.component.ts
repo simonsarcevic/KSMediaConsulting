@@ -1,10 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   AccessibilityPreference,
   AccessibilitySettingsService,
 } from '../../services/accessibility-settings.service';
 @Component({
   selector: 'app-footer',
+  imports: [RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
 })

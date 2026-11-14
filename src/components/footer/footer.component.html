@@ -1,7 +1,7 @@
 <footer aria-label="Fußbereich">
   <div class="top">
     <img src="/assets/brand/ks-logo-horizontal-negative.svg" alt="KS Media Consulting" /><a
-      href="#start"
+      href="#main-content"
       >Nach oben <span aria-hidden="true">↑</span></a
     >
   </div>
@@ -81,7 +81,9 @@
   </section>
   <div class="bottom">
     <span>© {{ year }} KS Media Consulting</span>
-    <span>Impressum · Datenschutz</span>
+    <nav class="legal-links" aria-label="Rechtliche Informationen">
+      <span>Impressum</span><a routerLink="/datenschutz">Datenschutz</a>
+    </nav>
     <span>Web · Social · Brand</span>
   </div>
 </footer>
