@@ -1,4 +1,5 @@
-import { Component, HostListener, output, signal } from '@angular/core';
+import { Component, HostListener, inject, output, signal } from '@angular/core';
+import { AccessibilitySettingsService } from '../../services/accessibility-settings.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -6,6 +7,7 @@ import { Component, HostListener, output, signal } from '@angular/core';
 })
 export class HeaderComponent {
   readonly contactClick = output<void>();
+  protected readonly settings = inject(AccessibilitySettingsService);
   protected readonly menuOpen = signal(false);
   protected readonly compact = signal(false);
   @HostListener('window:scroll') onScroll(): void {

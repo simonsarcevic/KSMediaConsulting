@@ -1,6 +1,12 @@
 <header [class.compact]="compact()">
   <a class="brand" href="#start" aria-label="KS Media Consulting – Startseite"
-    ><img src="/assets/brand/ks-logo-horizontal.svg" alt="KS Media Consulting"
+    ><img
+      [src]="
+        settings.darkMode() && !settings.highContrast()
+          ? '/assets/brand/ks-logo-horizontal-negative.svg'
+          : '/assets/brand/ks-logo-horizontal.svg'
+      "
+      alt=""
   /></a>
   <button
     class="menu-toggle"
@@ -16,6 +22,18 @@
     <a href="#leistungen" (click)="closeMenu()">Leistungen</a
     ><a href="#ueber-uns" (click)="closeMenu()">Über uns</a
     ><a href="#prozess" (click)="closeMenu()">Prozess</a>
+    <button
+      class="theme-toggle"
+      type="button"
+      [attr.aria-pressed]="settings.darkMode()"
+      [attr.aria-label]="
+        settings.darkMode() ? 'Hellen Modus aktivieren' : 'Dunklen Modus aktivieren'
+      "
+      (click)="settings.toggleDarkMode()"
+    >
+      <span class="sun" aria-hidden="true">☀</span>
+      <span class="moon" aria-hidden="true">☾</span>
+    </button>
     <button class="nav-cta" type="button" (click)="contactClick.emit(); closeMenu()">
       Projekt anfragen <span>↗</span>
     </button>

@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { effect, inject, Injectable, signal } from '@angular/core';
 
 export type AccessibilityPreference = 'contrast' | 'text' | 'motion' | 'links';
+type StoredPreference = AccessibilityPreference | 'theme';
 
 @Injectable({ providedIn: 'root' })
 export class AccessibilitySettingsService {
@@ -12,6 +13,7 @@ export class AccessibilitySettingsService {
   readonly largeText = signal(false);
   readonly reducedMotion = signal(false);
   readonly underlinedLinks = signal(false);
+  readonly darkMode = signal(false);
 
   constructor() {
     const saved = this.readPreferences();
@@ -19,6 +21,10 @@ export class AccessibilitySettingsService {
     this.largeText.set(saved.text === true);
     this.reducedMotion.set(saved.motion === true);
     this.underlinedLinks.set(saved.links === true);
+    this.darkMode.set(
+      saved.theme ??
+        (typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches),
+    );
 
     effect(() => {
       const preferences = {
@@ -26,12 +32,15 @@ export class AccessibilitySettingsService {
         text: this.largeText(),
         motion: this.reducedMotion(),
         links: this.underlinedLinks(),
+        theme: this.darkMode(),
       };
       const root = this.document.documentElement;
       root.toggleAttribute('data-a11y-contrast', preferences.contrast);
       root.toggleAttribute('data-a11y-text', preferences.text);
       root.toggleAttribute('data-a11y-motion', preferences.motion);
       root.toggleAttribute('data-a11y-links', preferences.links);
+      root.dataset['theme'] = preferences.theme ? 'dark' : 'light';
+      root.style.colorScheme = preferences.theme ? 'dark' : 'light';
 
       try {
         localStorage.setItem(this.storageKey, JSON.stringify(preferences));
@@ -39,6 +48,10 @@ export class AccessibilitySettingsService {
         // The settings still work for the current page if storage is unavailable.
       }
     });
+  }
+
+  toggleDarkMode(): void {
+    this.darkMode.update((dark) => !dark);
   }
 
   set(preference: AccessibilityPreference, enabled: boolean): void {
@@ -58,7 +71,7 @@ export class AccessibilitySettingsService {
     this.underlinedLinks.set(false);
   }
 
-  private readPreferences(): Partial<Record<AccessibilityPreference, boolean>> {
+  private readPreferences(): Partial<Record<StoredPreference, boolean>> {
     try {
       return JSON.parse(localStorage.getItem(this.storageKey) || '{}');
     } catch {

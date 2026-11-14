@@ -10,6 +10,17 @@
   --graphite: #242320;
   --focus: #0759c7;
 }
+:root[data-theme='dark'] {
+  --ivory: #151815;
+  --linen: #202520;
+  --sage: #a9bfa5;
+  --sage-light: #8da088;
+  --platinum: #bcb8b0;
+  --platinum-light: #eceae4;
+  --slate: #cbc8c0;
+  --graphite: #f5f2eb;
+  --focus: #9bc2ff;
+}
 :root[data-a11y-text] {
   font-size: 125%;
 }
@@ -39,6 +50,9 @@ body {
     Arial,
     sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 button,
 a {

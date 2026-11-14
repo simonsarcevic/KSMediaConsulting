@@ -165,7 +165,8 @@ textarea:focus {
 }
 input::placeholder,
 textarea::placeholder {
-  color: rgba(90, 88, 83, 0.66);
+  color: var(--slate);
+  opacity: 0.82;
 }
 .field.invalid {
   color: #9a3535;
@@ -187,6 +188,27 @@ textarea::placeholder {
 }
 .field-error {
   color: #7f2020;
+}
+:host-context([data-theme='dark']) .close {
+  background: var(--linen);
+}
+:host-context([data-theme='dark']) .field.invalid,
+:host-context([data-theme='dark']) .field-error,
+:host-context([data-theme='dark']) .form-error {
+  color: #ffaaaa;
+  border-bottom-color: #ffaaaa;
+}
+:host-context([data-theme='dark']) .success img {
+  filter: brightness(0) invert(1);
+}
+:host-context([data-a11y-contrast]) .field.invalid,
+:host-context([data-a11y-contrast]) .field-error,
+:host-context([data-a11y-contrast]) .form-error {
+  color: #790000;
+  border-bottom-color: #790000;
+}
+:host-context([data-a11y-contrast]) .success img {
+  filter: none;
 }
 .submit {
   border: 0;

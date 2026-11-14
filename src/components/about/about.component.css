@@ -63,6 +63,9 @@ h2 {
 :host-context([data-a11y-contrast]) .about-mark {
   border: 2px solid var(--ivory);
 }
+:host-context([data-theme='dark']) .about-mark {
+  background: #0b0e0b;
+}
 @media (max-width: 900px) {
   .about {
     grid-template-columns: 1fr;

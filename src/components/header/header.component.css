@@ -75,6 +75,56 @@ nav a:hover::after {
 .nav-cta span {
   margin-left: 11px;
 }
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--sage);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--graphite);
+  cursor: pointer;
+}
+.theme-toggle span {
+  position: absolute;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.theme-toggle .sun {
+  opacity: 0;
+  transform: translateY(18px) rotate(-70deg);
+}
+.theme-toggle .moon {
+  opacity: 1;
+  transform: none;
+}
+.theme-toggle[aria-pressed='true'] .sun {
+  opacity: 1;
+  transform: none;
+}
+.theme-toggle[aria-pressed='true'] .moon {
+  opacity: 0;
+  transform: translateY(-18px) rotate(70deg);
+}
+:host-context([data-theme='dark']) header {
+  background: rgba(21, 24, 21, 0.88);
+}
+:host-context([data-theme='dark']) header.compact {
+  border-color: rgba(169, 191, 165, 0.35);
+  background: rgba(21, 24, 21, 0.96);
+}
+:host-context([data-a11y-contrast]) header,
+:host-context([data-a11y-contrast]) header.compact {
+  border-color: #000;
+  background: rgba(255, 255, 255, 0.98);
+}
 .menu-toggle {
   display: none;
 }
@@ -127,5 +177,8 @@ nav a:hover::after {
   .nav-cta {
     margin-top: auto;
     width: 100%;
+  }
+  .theme-toggle {
+    margin-top: 8px;
   }
 }

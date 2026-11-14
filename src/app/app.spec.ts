@@ -3,9 +3,25 @@ import { App } from './app';
 
 describe('App', () => {
   beforeEach(async () => {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-theme');
     await TestBed.configureTestingModule({
       imports: [App],
     }).compileComponents();
+  });
+
+  it('toggles dark mode from the navigation and exposes its state', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const toggle = fixture.nativeElement.querySelector('.theme-toggle') as HTMLButtonElement;
+    const initialState = toggle.getAttribute('aria-pressed') === 'true';
+
+    toggle.click();
+    fixture.detectChanges();
+
+    expect(toggle.getAttribute('aria-pressed')).toBe(String(!initialState));
+    expect(document.documentElement.dataset['theme']).toBe(initialState ? 'light' : 'dark');
   });
 
   it('should create the app', () => {

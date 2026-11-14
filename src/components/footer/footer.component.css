@@ -3,6 +3,13 @@ footer {
   color: var(--platinum-light);
   padding: 52px clamp(24px, 6vw, 96px) 25px;
 }
+:host-context([data-theme='dark']) footer {
+  background: #0b0e0b;
+}
+:host-context([data-a11y-contrast]) footer {
+  background: #000;
+  color: #fff;
+}
 .top {
   display: flex;
   justify-content: space-between;
