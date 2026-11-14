@@ -25,5 +25,16 @@ describe('PrivacyPageComponent', () => {
     expect(page.querySelector('a[href^="mailto:"]')).toBeTruthy();
     expect(page.textContent).toContain('IONOS SE');
     expect(page.textContent).not.toContain('OpenAI Sites');
+
+    const contentsLinks = Array.from(page.querySelectorAll<HTMLAnchorElement>('.contents a')).map(
+      (link) => link.getAttribute('href'),
+    );
+    expect(contentsLinks).toEqual([
+      '/datenschutz#verantwortlicher',
+      '/datenschutz#hosting',
+      '/datenschutz#kontaktformular',
+      '/datenschutz#einstellungen',
+      '/datenschutz#rechte',
+    ]);
   });
 });
