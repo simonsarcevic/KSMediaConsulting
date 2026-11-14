@@ -89,7 +89,7 @@ h1 em {
   height: min(58vh, 560px);
   min-height: 380px;
   position: relative;
-  background: var(--sage-light);
+  background: color-mix(in srgb, var(--sage-light) 60%, var(--sage) 40%);
   overflow: hidden;
   box-shadow: 18px 18px 0 rgba(227, 223, 211, 0.72);
 }
@@ -100,6 +100,14 @@ h1 em {
   background:
     radial-gradient(circle at 67% 36%, rgba(246, 241, 231, 0.22), transparent 31%),
     linear-gradient(145deg, transparent 42%, rgba(46, 45, 42, 0.2));
+}
+:host-context([data-theme='dark']) .hero-visual {
+  background: color-mix(in srgb, var(--sage-light) 82%, var(--ivory) 18%);
+}
+:host-context([data-theme='dark']) .hero-visual::before {
+  background:
+    radial-gradient(circle at 67% 36%, rgba(21, 24, 21, 0.12), transparent 31%),
+    linear-gradient(145deg, transparent 42%, rgba(245, 242, 235, 0.12));
 }
 .focus-frame {
   position: absolute;
