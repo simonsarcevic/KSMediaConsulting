@@ -28,7 +28,7 @@ folgende Werte stehen:
 ```dotenv
 RESEND_API_KEY=re_dein_key
 CONTACT_TO_EMAIL=kontakt@ksmediaconsulting.de
-CONTACT_FROM_EMAIL=K&S Media Consulting <onboarding@resend.dev>
+CONTACT_FROM_EMAIL=KS Media Consulting <onboarding@resend.dev>
 ```
 
 `npm start` startet sowohl Angular auf `http://localhost:4200/` als auch das lokale
