@@ -7,9 +7,10 @@ wird ausschließlich als Runtime-Secret `RESEND_API_KEY` gesetzt und darf nicht 
 Git oder Build-Dateien gespeichert werden. Die verfügbaren Variablennamen stehen in
 `.env.example`.
 
-`CONTACT_FROM_EMAIL` muss bei Resend als Absender verifiziert sein. Für einen ersten Test kann
-`K&S Media Consulting <onboarding@resend.dev>` verwendet werden; dieser Resend-Testabsender kann
-nur an die E-Mail-Adresse des Resend-Kontos senden.
+`CONTACT_FROM_EMAIL` verwendet die bei Resend verifizierte Domain. Das Kontaktformular sendet
+interne Benachrichtigungen als
+`KS Media Consulting Kontaktformular <noreply@ksmediaconsulting.de>`. Die E-Mail-Adresse des
+Besuchers wird als `Reply-To` gesetzt, sodass Antworten direkt an den Besucher gehen.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
 
@@ -28,7 +29,7 @@ folgende Werte stehen:
 ```dotenv
 RESEND_API_KEY=re_dein_key
 CONTACT_TO_EMAIL=luca.kruse@ksmediaconsulting.de
-CONTACT_FROM_EMAIL=KS Media Consulting <onboarding@resend.dev>
+CONTACT_FROM_EMAIL=KS Media Consulting Kontaktformular <noreply@ksmediaconsulting.de>
 ```
 
 `npm start` startet sowohl Angular auf `http://localhost:4200/` als auch das lokale

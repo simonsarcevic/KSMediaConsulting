@@ -7,7 +7,7 @@ const server = createContactServer({
   env: {
     RESEND_API_KEY: 'test-secret',
     CONTACT_TO_EMAIL: 'luca.kruse@ksmediaconsulting.de',
-    CONTACT_FROM_EMAIL: 'K&S Media Consulting <onboarding@resend.dev>',
+    CONTACT_FROM_EMAIL: 'KS Media Consulting Kontaktformular <noreply@ksmediaconsulting.de>',
   },
   fetchImpl: async (url, options) => {
     resendRequest = { url, options };
