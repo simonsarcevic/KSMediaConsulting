@@ -6,7 +6,7 @@ let resendRequest;
 const server = createContactServer({
   env: {
     RESEND_API_KEY: 'test-secret',
-    CONTACT_TO_EMAIL: 'sarcevicsimon07@gmail.com',
+    CONTACT_TO_EMAIL: 'kontakt@ksmediaconsulting.de',
     CONTACT_FROM_EMAIL: 'K&S Media Consulting <onboarding@resend.dev>',
   },
   fetchImpl: async (url, options) => {
@@ -35,7 +35,7 @@ try {
   assert.deepEqual(await response.json(), { ok: true });
   assert.equal(resendRequest.url, 'https://api.resend.com/emails');
   const payload = JSON.parse(resendRequest.options.body);
-  assert.deepEqual(payload.to, ['sarcevicsimon07@gmail.com']);
+  assert.deepEqual(payload.to, ['kontakt@ksmediaconsulting.de']);
   assert.equal(payload.reply_to, 'test@example.com');
   console.log('Local contact API test passed.');
 } finally {

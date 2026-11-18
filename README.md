@@ -27,7 +27,7 @@ folgende Werte stehen:
 
 ```dotenv
 RESEND_API_KEY=re_dein_key
-CONTACT_TO_EMAIL=sarcevicsimon07@gmail.com
+CONTACT_TO_EMAIL=kontakt@ksmediaconsulting.de
 CONTACT_FROM_EMAIL=K&S Media Consulting <onboarding@resend.dev>
 ```
 
