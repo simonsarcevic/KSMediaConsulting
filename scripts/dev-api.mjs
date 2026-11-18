@@ -90,7 +90,7 @@ export function createContactServer({ env = process.env, fetchImpl = fetch } = {
         },
         body: JSON.stringify({
           from: env.CONTACT_FROM_EMAIL || 'KS Media Consulting <noreply@KSMediaConsulting.de>',
-          to: [env.CONTACT_TO_EMAIL || 'kontakt@ksmediaconsulting.de'],
+          to: [env.CONTACT_TO_EMAIL || 'luca.kruse@ksmediaconsulting.de'],
           reply_to: email,
           subject: `Neue Projektanfrage von ${name}`,
           text: [`Name: ${name}`, `E-Mail: ${email}`, '', 'Anfrage:', subject].join('\n'),
