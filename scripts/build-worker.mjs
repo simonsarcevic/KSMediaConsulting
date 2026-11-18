@@ -5,7 +5,6 @@ const projectRoot = resolve(import.meta.dirname, '..');
 const distRoot = join(projectRoot, 'dist');
 const clientRoot = join(distRoot, 'client');
 const serverRoot = join(distRoot, 'server');
-const hostingRoot = join(distRoot, '.openai');
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -49,11 +48,6 @@ if (workerOutput === workerTemplate) {
 
 await rm(serverRoot, { recursive: true, force: true });
 await mkdir(serverRoot, { recursive: true });
-await mkdir(hostingRoot, { recursive: true });
 await writeFile(join(serverRoot, 'index.js'), workerOutput);
-await writeFile(
-  join(hostingRoot, 'hosting.json'),
-  await readFile(join(projectRoot, '.openai', 'hosting.json')),
-);
 
 console.log(`Bundled ${Object.keys(assets).length} client assets into dist/server/index.js`);
